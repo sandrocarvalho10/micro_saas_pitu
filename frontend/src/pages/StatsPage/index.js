@@ -9,6 +9,7 @@ import ptBR from 'date-fns/locale/pt-BR'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { StatsContainer, StatsRow, StatsBox, StatsBoxTitle } from './styles'
+import vars from '../../configs/vars'
 
 
 
@@ -42,16 +43,9 @@ class StatsPage extends React.Component {
 
       shortenedURL.relativeDate = relativeDate;
 
-      // console.log({
-      //   'Data original: ': shortenedURL.updatedAt,
-      //   'Data convertida: ': parsedDate,
-      //   'Data relativa: ': relativeDate
-      // });
-
       this.setState({isLoading: false, shortenedURL })
       
     }catch(error){
-      // console.log(error)
       this.setState({ isLoading: false, errorMessage: 'Ops, a url solicitada não existe.' })
     }
   }
@@ -71,7 +65,7 @@ class StatsPage extends React.Component {
           </StatsContainer>
         ) : (
           <StatsContainer className="text-center">
-            <p><b>https://pitu.tk/{shortenedURL.code}</b></p>
+            <p><b>{vars.HOST_APP + shortenedURL.code}</b></p>
             <p>Redireciona para: <br />{ shortenedURL.url }</p>
             <StatsRow>
               <StatsBox>
